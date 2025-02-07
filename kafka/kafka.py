@@ -31,12 +31,9 @@ def delivery_callback(err, msg):
     else:
         print(f'Message delivered to {msg.topic()} [{msg.partition()}]')
 
-for i in range(1, 11):
-    data = {"index": i, "message": f"Hello Kafka! From Gopi Nath- {i}"}
+for i in range(1, 1000):
+    data = {"index": i, "message": f"Hello Kafka! From Gopi Pandit- {i}"}
     producer.produce(topic, key=str(i), value=json.dumps(data),callback=delivery_callback)
+    time.sleep(0.1)
 producer.flush()
 print("All messages sent to Kafka")
-
-# producer.produce(topic, key='test_key', value='test_value', callback=delivery_callback)
-producer.flush()
-print("Test message sent to Kafka")
