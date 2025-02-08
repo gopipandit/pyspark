@@ -20,9 +20,9 @@ conf = {
     'bootstrap.servers': bootstrap_server, 
     'security.protocol': 'SASL_SSL',    
     'sasl.mechanisms': 'PLAIN',     
-    'sasl.username': api_key,     
-    'sasl.password': api_secret, 
-    'group.id': 'your_group_id',  # Add a unique consumer group ID
+    'sasl.username': os.getenv('api_key2'),
+    'sasl.password': os.getenv('api_secret2'),
+    'group.id': 'ABS_Bank_Ltd',  # Add a unique consumer group ID
     'auto.offset.reset': 'earliest',  # Start reading from the earliest message
 }
 
@@ -39,10 +39,10 @@ except Exception as e:
 
 # Access the database and collection
 db = client['kafkaDB']
-collection = db['kafkaMsg']
+collection = db['bank_txn']
 
 # Kafka topic
-topic = 'gopinath-de'
+topic = 'txn_data'
 
 # Create a consumer instance
 consumer = Consumer(conf)
