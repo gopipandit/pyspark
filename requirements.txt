@@ -1,0 +1,4 @@
+python-dotenv
+pyspark
+pandas
+numpy
